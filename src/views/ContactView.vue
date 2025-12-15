@@ -37,7 +37,7 @@
           <div>
             <h3>Otváracie hodiny</h3>
             <p>
-              Pondelok - Piatok: 9:00 - 17:00<br>\n              Sobota: 10:00 - 14:00<br>\n              Nedeľa: Zatvorené\n            </p>
+              Pondelok - Piatok: 9:00 - 17:00<br>Sobota: 10:00 - 14:00<br>Nedeľa: Zatvorené</p>
           </div>
         </div>
       </div>
