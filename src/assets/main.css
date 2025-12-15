@@ -1,35 +1,62 @@
 @import './base.css';
 
+:root {
+  --primary-color: #1e90ff;
+  --primary-dark: #0066cc;
+  --primary-light: #4da6ff;
+  --accent-color: #ff6b35;
+  --text-color: #333;
+  --light-bg: #f8f9fa;
+  --border-color: #ddd;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-color);
+  background-color: #fff;
+  line-height: 1.6;
+}
+
 #app {
-  max-width: 1280px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  flex: 1;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
-  font-weight: normal;
+  width: 100%;
 }
 
-a,
-.green {
+a {
   text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
+  color: var(--primary-color);
+  transition: 0.3s ease;
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
+a:hover {
+  color: var(--primary-dark);
 }
 
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
+button {
+  cursor: pointer;
+  font-family: inherit;
+  transition: 0.3s ease;
+}
 
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
   }
 }
