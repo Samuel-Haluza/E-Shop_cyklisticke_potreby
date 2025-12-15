@@ -8,7 +8,7 @@ import AboutView from '../views/AboutView.vue'
 import ContactView from '../views/ContactView.vue'
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory('/E-Shop_cyklisticke_potreby/'),
   routes: [
     { path: '/', component: HomeView },
     { path: '/products', component: ProductsView },
