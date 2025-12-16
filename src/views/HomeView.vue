@@ -5,7 +5,7 @@
       <p class="hero-subtitle">Tvoj obľúbený obchod so všetkými cyklistickými potrebami</p>
       <router-link to="/products" class="hero-btn">Pozrieť produkty</router-link>
     </div>
-    
+
     <section class="features">
       <h2>Prečo si vybrať BikeShop?</h2>
       <div class="features-grid">
