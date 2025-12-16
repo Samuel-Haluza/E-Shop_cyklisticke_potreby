@@ -9,22 +9,19 @@
 
 <script>
 import ProductCard from '../components/ProductCard.vue'
+import { useProductStore } from '../stores/productStore'
 
 export default {
   components: { ProductCard },
-  data() {
+  setup() {
+    const productStore = useProductStore()
     return {
-      products: [
-        { id: 1, name: 'Bicykel', price: 800 },
-        { id: 2, name: 'Prilba', price: 60 },
-        { id: 3, name: 'Rukavice', price: 25 },
-        { id: 4, name: 'Cyklistický dres', price: 45 },
-        { id: 5, name: 'Cyklistické nohavice', price: 70 },
-        { id: 6, name: 'Cyklistické topánky', price: 120 },
-        { id: 7, name: 'Fľaša na vodu', price: 15 },
-        { id: 8, name: 'Pumpa na bicykel', price: 30 },
-        { id: 9, name: 'Cyklistické okuliare', price: 50 }
-      ]
+      productStore
+    }
+  },
+  computed: {
+    products() {
+      return this.productStore.getAllProducts
     }
   }
 }
