@@ -5,9 +5,9 @@
     </div>
     <div class="product-info">
       <h3 class="product-name">{{ product.name }}</h3>
-      <p class="product-price">{{ product.price }} €</p>
+      <PriceSection :price="product.price" />
       <div class="product-actions">
-        <BaseButton @click="add" class="add-btn">Pridať do košíka</BaseButton>
+        <button @click="add" class="add-btn">Pridať do košíka</button>
         <router-link :to="'/products/' + product.id" class="detail-link">Detail →</router-link>
       </div>
     </div>
@@ -16,19 +16,25 @@
 
 <script>
 import { useCartStore } from '../stores/cartStore'
-import BaseButton from './BaseButton.vue'
+import PriceSection from './PriceSection.vue'
 
 export default {
   props: { product: Object },
-  components: { BaseButton },
+  components: { PriceSection },
   methods: {
     add() {
       useCartStore().addToCart(this.product)
     },
     getIcon(name) {
       if (name.toLowerCase().includes('bicykel')) return '🚲'
-      if (name.toLowerCase().includes('prilba')) return '🎽'
+      if (name.toLowerCase().includes('cyklistický dres')) return '🎽'
       if (name.toLowerCase().includes('rukavice')) return '🧤'
+      if (name.toLowerCase().includes('prilba')) return '⛑️'
+      if (name.toLowerCase().includes('fľaša')) return '🚰'
+      if (name.toLowerCase().includes('pumpa')) return '🔧'
+      if (name.toLowerCase().includes('okuliare')) return '🕶️'
+      if (name.toLowerCase().includes('topánky')) return '👟'
+      if (name.toLowerCase().includes('nohavice')) return '👖'
       return '📦'
     }
   }
@@ -87,23 +93,37 @@ export default {
   color: var(--text-color);
 }
 
-.product-price {
-  font-size: 1.8rem;
-  color: var(--primary-color);
-  font-weight: bold;
-  margin-bottom: 1rem;
-}
-
 .product-actions {
   display: flex;
   gap: 1rem;
-  margin-top: auto;
+  margin-top: 1rem;
   flex-wrap: wrap;
 }
 
 .add-btn {
   flex: 1;
   min-width: 150px;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(30, 144, 255, 0.3);
+}
+
+.add-btn:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.add-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 2px rgba(30, 144, 255, 0.3);
 }
 
 .detail-link {

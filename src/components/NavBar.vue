@@ -8,7 +8,9 @@
       <div class="nav-links">
         <router-link to="/" class="nav-link" active-class="active">Domov</router-link>
         <router-link to="/products" class="nav-link" active-class="active">Produkty</router-link>
-        <router-link to="/cart" class="nav-link" active-class="active">Košík</router-link>
+        <router-link to="/cart" class="nav-link cart-link" active-class="active">
+          Košík <span v-if="cartCount > 0" class="cart-badge">{{ cartCount }}</span>
+        </router-link>
         <router-link to="/about" class="nav-link" active-class="active">O nás</router-link>
         <router-link to="/contact" class="nav-link" active-class="active">Kontakt</router-link>
       </div>
@@ -17,7 +19,21 @@
 </template>
 
 <script>
-export default {}
+import { useCartStore } from '../stores/cartStore'
+
+export default {
+  setup() {
+    const cartStore = useCartStore()
+    return {
+      cartStore
+    }
+  },
+  computed: {
+    cartCount() {
+      return this.cartStore.cartItemCount
+    }
+  }
+}
 </script>
 
 <style scoped>
@@ -80,6 +96,24 @@ export default {}
 .nav-link.active {
   background-color: var(--accent-color);
   color: white;
+}
+
+.cart-link {
+  position: relative;
+}
+
+.cart-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--accent-color);
+  color: white;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  margin-left: 0.3rem;
 }
 
 @media (max-width: 768px) {

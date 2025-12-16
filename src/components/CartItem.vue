@@ -6,29 +6,34 @@
       <p class="item-quantity">Množstvo: {{ item.quantity }}</p>
       <p class="item-total">Spolu: {{ (item.price * item.quantity).toFixed(2) }} €</p>
     </div>
-    <div class="item-price">
-      <p class="price-value">{{ item.price }} €</p>
+    <PriceSection :price="item.price" />
+      
+    <div class="item-actions">
+      <button class="remove-btn" @click="remove">Odstrániť jeden kus</button>
+      <button class="remove-btn" @click="removeFromCart">Všetky kusy</button>
     </div>
-    <button class="remove-btn" @click="remove" title="Odstrániť z košíka">
-      ✕
-    </button>
   </div>
 </template>
 
 <script>
 import { useCartStore } from '../stores/cartStore'
+import PriceSection from './PriceSection.vue'
 
 export default {
   props: { item: Object },
+  components: { PriceSection },
   methods: {
     remove() {
-      useCartStore().removeFromCart(this.item.id)
+      useCartStore().decreaseQuantity(this.item.id)
     },
     getIcon(name) {
       if (name.toLowerCase().includes('bicykel')) return '🚲'
       if (name.toLowerCase().includes('prilba')) return '🎽'
       if (name.toLowerCase().includes('rukavice')) return '🧤'
       return '📦'
+    },
+    removeFromCart() {
+      useCartStore().removeFromCart(this.item.id)
     }
   }
 }
@@ -94,6 +99,7 @@ export default {
 .item-price {
   text-align: center;
   min-width: 80px;
+  flex-shrink: 0;
 }
 
 .price-value {
@@ -103,23 +109,33 @@ export default {
   margin: 0;
 }
 
+.item-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
 .remove-btn {
   background: #ff4444;
   color: white;
   border: none;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
   cursor: pointer;
-  font-size: 1.2rem;
+  font-weight: 600;
   transition: all 0.3s ease;
-  flex-shrink: 0;
+  font-size: 0.9rem;
+  white-space: nowrap;
 }
 
 .remove-btn:hover {
   background: #cc0000;
   transform: scale(1.1);
   box-shadow: 0 2px 8px rgba(255, 68, 68, 0.3);
+}
+
+.remove-btn:active {
+  transform: scale(0.98);
 }
 
 @media (max-width: 768px) {
