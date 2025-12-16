@@ -1,9 +1,9 @@
 <template>
   <section class="cart-view">
     <h1>Váš Nákupný Košík</h1>
-    <div v-if="cart.items.length > 0" class="cart-container">
+    <div v-if="cartItems.length > 0" class="cart-container">
       <div class="cart-items">
-        <CartItem v-for="i in cart.items" :key="i.id" :item="i" />
+        <CartItem v-for="i in cartItems" :key="i.id" :item="i" />
       </div>
       <div class="cart-summary">
         <h3>Zhrnutie objednávky</h3>
@@ -13,7 +13,7 @@
         </div>
         <div class="summary-row total">
           <span>Spolu:</span>
-          <strong>{{ cart.totalPrice.toFixed(2) }} €</strong>
+          <strong>{{ totalPrice.toFixed(2) }} €</strong>
         </div>
         <button class="checkout-btn">Prejsť na platbu</button>
       </div>
@@ -33,11 +33,11 @@ import CartItem from '../components/CartItem.vue'
 export default {
   components: { CartItem },
   computed: {
-    cart() {
-      return useCartStore()
+    cartItems() {
+      return useCartStore().cartItems
     },
-    totalItems() {
-      return this.cart.items.reduce((sum, i) => sum + i.quantity, 0)
+    totalPrice() {
+      return useCartStore().totalPrice
     }
   }
 }
