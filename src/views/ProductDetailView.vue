@@ -26,6 +26,7 @@ import { useCartStore } from '../stores/cartStore'
 import { useProductStore } from '../stores/productStore'
 import PriceSection from '../components/PriceSection.vue'
 import ProductRating from '../components/ProductRating.vue'
+import { getIcon } from '../utils/iconHelpers'
 
 export default {
   components: { PriceSection, ProductRating },
@@ -51,16 +52,7 @@ export default {
       }
     },
     getIcon(name) {
-      if (name.toLowerCase().includes('bicykel')) return '🚲'
-      if (name.toLowerCase().includes('prilba')) return '🎽'
-      if (name.toLowerCase().includes('rukavice')) return '🧤'
-      if (name.toLowerCase().includes('dres')) return '👕'
-      if (name.toLowerCase().includes('nohavice')) return '👖'
-      if (name.toLowerCase().includes('topánky')) return '👟'
-      if (name.toLowerCase().includes('fľaša')) return '🧴'
-      if (name.toLowerCase().includes('pumpa')) return '💨'
-      if (name.toLowerCase().includes('okuliare')) return '🕶️'
-      return '📦'
+      return getIcon(name)
     },
     onReviewSubmitted(review) {
       if (this.currentProduct.id !== 0) {

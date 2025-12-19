@@ -17,6 +17,7 @@
 <script>
 import { useCartStore } from '../stores/cartStore'
 import PriceSection from './PriceSection.vue'
+import { getIcon } from '../utils/iconHelpers'
 
 export default {
   props: { product: Object },
@@ -26,16 +27,7 @@ export default {
       useCartStore().addToCart(this.product)
     },
     getIcon(name) {
-      if (name.toLowerCase().includes('bicykel')) return '🚲'
-      if (name.toLowerCase().includes('cyklistický dres')) return '🎽'
-      if (name.toLowerCase().includes('rukavice')) return '🧤'
-      if (name.toLowerCase().includes('prilba')) return '⛑️'
-      if (name.toLowerCase().includes('fľaša')) return '🚰'
-      if (name.toLowerCase().includes('pumpa')) return '🔧'
-      if (name.toLowerCase().includes('okuliare')) return '🕶️'
-      if (name.toLowerCase().includes('topánky')) return '👟'
-      if (name.toLowerCase().includes('nohavice')) return '👖'
-      return '📦'
+      return getIcon(name)
     }
   }
 }

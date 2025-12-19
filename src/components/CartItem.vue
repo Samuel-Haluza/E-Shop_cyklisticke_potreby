@@ -18,6 +18,7 @@
 <script>
 import { useCartStore } from '../stores/cartStore'
 import PriceSection from './PriceSection.vue'
+import { getIcon } from '../utils/iconHelpers'
 
 export default {
   props: { item: Object },
@@ -27,10 +28,7 @@ export default {
       useCartStore().decreaseQuantity(this.item.id)
     },
     getIcon(name) {
-      if (name.toLowerCase().includes('bicykel')) return '🚲'
-      if (name.toLowerCase().includes('prilba')) return '🎽'
-      if (name.toLowerCase().includes('rukavice')) return '🧤'
-      return '📦'
+      return getIcon(name)
     },
     removeFromCart() {
       useCartStore().removeFromCart(this.item.id)
