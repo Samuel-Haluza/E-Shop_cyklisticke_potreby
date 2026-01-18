@@ -133,20 +133,20 @@ export default {
   },
   methods: {
     initMap() {
-      // Koordináty: Bratislava
+      
       const location = [48.1486, 17.1077]
       
-      // Vytvor mapu
+    
       this.map = L.map('map').setView(location, 15)
 
-      // Pridaj OpenStreetMap vrstvu
+      
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
         maxZoom: 19,
         minZoom: 2
       }).addTo(this.map)
 
-      // Vytvor vlastný ikony marker
+      
       const customIcon = L.divIcon({
         html: `
           <div style="
@@ -171,10 +171,10 @@ export default {
         className: 'custom-marker'
       })
 
-      // Pridaj marker
+      
       const marker = L.marker(location, { icon: customIcon }).addTo(this.map)
 
-      // Pridaj popup
+      
       const popupContent = `
         <div style="font-family: Arial, sans-serif; min-width: 250px;">
           <h3 style="margin: 0 0 10px 0; color: #1e90ff; font-size: 1.1em;">🚲 BikeShop</h3>

@@ -1,171 +1,175 @@
 # 🚴 Cyklistický E-Shop
 
-Moderný e-shop pre cyklistických produktov vytvorený s Vue.js 3 a Pinia state management.
+Webová aplikácia - e-shop s bicyklickými potrebami vytvorený v rámci predmetu Frontendové technológie.
 
-## 📋 Popis Projektu
+## Popis Projektu
 
-Cyklistický E-Shop je webová aplikácia, ktorá ponúka predaj rôznych cyklistických produktov a príslušenstva. Aplikácia umožňuje užívateľom prehliadať produkty, čítať ich detaily, pridávať ich do košíka a opustiť recenzie.
+E-Shop s katalógom bicyklických produktov. Aplikácia umožňuje prehliadanie produktov, správu nákupného košíka a komunikáciu so zákazníckym servisom.
 
-## ✨ Hlavné Funkcie
+## Funkčnosť
 
-- 🛍️ **Katalóg produktov** - Prehliadanie 9 rôznych cyklistických produktov
-- 🛒 **Nákupný košík** - Pridávanie, odoberanie a správa produktov v košíku
-- ⭐ **Recenzie a hodnotenia** - Užívatelia môžu opustiť recenzie na produkty
-- 💾 **Persistencia dát** - Košík sa ukladá do localStorage
-- 📱 **Responzívny dizajn** - Funkčné na všetkých zariadeniach
-- 🔀 **Viacero podstránok** - Domov, Produkty, Detail produktu, Košík, O nás, Kontakt
+- **Katalóg produktov** - Prehliadanie a vyhľadávanie rôznych bicyklických produktov
+- **Nákupný košík** - Pridávanie, odoberanie a správa množstiev položiek, ukladanie do localStorage
+- **Detail produktu** - Podrobné informácie vrátane popisu, ceny, dostupnosti
+- **Recenzie a hodnotenia** - Možnosť čítania a písania recenzií s hviezdicovým hodnotením
+- **Interaktívna mapa** - Mapa lokalizácie predajného miesta s Leaflet integráciou
+- **Viacero podstránok** - Navigácia medzi stránkami (Home, Products, Cart, About, Contact)
+- **Kontaktný formulár** - Komunikácia so zákazníckym servisom
+- **Responzívny dizajn** - Optimalizácia pre mobilné zariadenia, tablety a počítače
 
-## 🛠️ Technológie
+## Technológie
 
-- **Vue.js 3** - Progressive JavaScript framework
-- **Vue Router** - Client-side routing
-- **Pinia** - State management store
-- **Vite** - Lightning fast build tool
-- **HTML 5** - Sémantické značky
-- **CSS 3** - Moderný styling s CSS premennými
+- **Vue.js 3.5.25** - JavaScript framework pre interaktívne UI
+- **Vue Router 4.6.3** - Client-side routing medzi stránkami
+- **Pinia 3.0.4** - State management pre globálny stav aplikácie
+- **Vite 7.2.4** - Rýchly build nástroj a dev server
+- **Leaflet 1.9.4** - Open-source knižnica pre interaktívne mapy
+- **HTML 5** - Sémantické HTML značky
+- **CSS 3** - Moderný styling s flexbox a grid layoutom
 
-## 📂 Štruktúra Projektu
+## Štruktúra Projektu
 
 ```
 src/
-├── components/          # Reusable komponenty
-│   ├── CartItem.vue    # Položka v košíku
-│   ├── Footer.vue      # Pätička
-│   ├── NavBar.vue      # Navigácia
-│   ├── ProductCard.vue # Karta produktu
-│   ├── PriceSection.vue# Cena a dostupnosť
-│   └── ProductRating.vue# Recenzie
-├── views/              # Page komponenty
+├── components/          # Opätovne použiteľné komponenty
+│   ├── CartItem.vue
+│   ├── Footer.vue
+│   ├── NavBar.vue
+│   ├── PriceSection.vue
+│   ├── ProductCard.vue
+│   └── ProductRating.vue
+├── views/              # Stránky (6 podstránok)
 │   ├── HomeView.vue
 │   ├── ProductsView.vue
 │   ├── ProductDetailView.vue
 │   ├── CartView.vue
 │   ├── AboutView.vue
 │   └── ContactView.vue
-├── stores/             # Pinia stores
-│   ├── cartStore.js    # Správa košíka
-│   └── productStore.js # Správa produktov
+├── stores/             # Pinia state management
+│   ├── cartStore.js
+│   └── productStore.js
 ├── router/
-│   └── index.js        # Konfigurácia routeru
+│   └── index.js        # Vue Router konfigurácia
 └── assets/
-    └── *.css           # Globálne štýly
+    └── CSS súbory
 ```
 
-## 🚀 Inštalácia a Spustenie
+## Inštalácia a Spustenie
 
-### Požiadavky
-- Node.js 14+
-- npm alebo yarn
-
-### Kroky
-
-1. **Klonuj repozitár**
 ```bash
-git clone https://github.com/tvoj-username/cyklistickeshop.git
-cd cyklistickeshop
-```
-
-2. **Nainštaluj závislosti**
-```bash
+# Inštalácia závislostí
 npm install
-```
 
-3. **Spusti vývojový server**
-```bash
+# Spustenie vývojového servera
 npm run dev
-```
 
-4. **Otvori prehliadač**
-```
-http://localhost:5173
-```
-
-## 📦 Build pre Produkciu
-
-```bash
+# Build pre produkciu
 npm run build
+
+# Nasadenie na GitHub Pages
+npm run deploy
 ```
 
-Výstup sa generuje do `dist/` priečinka.
+Aplikácia bude dostupná na `http://localhost:5173`
 
-## 🎨 Komponenty
+## Komponenty (6+ opätovne použiteľných)
 
-### CartItem.vue
-Zobrazuje jednotlivú položku v nákupnom košíku s možnosťou zmeny množstva a vymazania.
+1. **CartItem.vue** - Položka v nákupnom košíku s možnosťou zmeny počtu kusov a odobrania
+2. **Footer.vue** - Pätička stránky so základnými informáciami a linkami
+3. **NavBar.vue** - Navigačná lišta s linkami na všetky časti aplikácie a počítadlom v košíku
+4. **PriceSection.vue** - Komponent zobrazujúci cenu, dostupnosť a informácie o produkte
+5. **ProductCard.vue** - Karta produktu v katalógu s obrázkom, názvom, cenou a možnosťou pridania do košíka
+6. **ProductRating.vue** - Komponent s hviezdicovým hodnotením a sekciou recenzií od užívateľov
 
-### ProductCard.vue
-Karta produktu v katalógu s menom, cenou a tlačítkami pre pridanie do košíka.
+## State Management (Pinia)
 
-### PriceSection.vue
-Reusable komponenta na zobrazenie ceny a dostupnosti produktu.
+**cartStore.js** - Správa nákupného košíka
+- `items` - Pole produktov v košíku
+- `addToCart(product)` - Pridanie produktu do košíka
+- `removeFromCart(productId)` - Odobratie produktu z košíka
+- `decreaseQuantity(productId)` - Zmenšenie počtu kusov produktu
+- `totalPrice` - Výpočet celkovej ceny všetkých položiek
+- `cartItemCount` - Počítadlo počtu položiek v košíku
+- Persistencia dát do localStorage - Košík sa ukladá lokálne v prehliadači
 
-### ProductRating.vue
-Komponenta s hviezdicovým hodnotením a možnosťou opustenia recenzie.
+**productStore.js** - Správa katalógu produktov
+- `products` - Pole všetkých dostupných produktov
+- `getAllProducts()` - Getter vracia všetky produkty
+- `getProductById(id)` - Vyhľadávanie konkrétneho produktu podľa ID
+- `getProductCount` - Počet produktov v katalógu
+- `searchProducts(query)` - Vyhľadávanie produktov podľa názvu alebo popisu
 
-### NavBar.vue
-Navigačná lišta s odkazmi na všetky stránky a počítadlom položiek v košíku.
+## Stránky Aplikácie
 
-### Footer.vue
-Pätička so základnými informáciami.
+**HomeView.vue** - Domovská stránka s úvodným obsahom a highlights produktov
 
-## 💾 State Management (Pinia)
+**ProductsView.vue** - Katalóg všetkých produktov s možnosťou filtrácií a sortovacích opcií
 
-### cartStore.js
-- `items` - Zoznam položiek v košíku
-- `addToCart()` - Pridajte produkt do košíka
-- `decreaseQuantity()` - Znížte množstvo produktu
-- `removeFromCart()` - Vymažte produkt
-- `totalPrice` - Celková cena
-- `cartItemCount` - Počet položiek
+**ProductDetailView.vue** - Detailná stránka konkrétneho produktu s:
+- Podrobným opisom
+- Cenou a dostupnosťou
+- Recenziami užívateľov
+- Možnosťou pridania do košíka
 
-### productStore.js
-- `products` - Zoznam všetkých produktov
-- `getAllProducts` - Getter pre všetky produkty
-- `getProductById()` - Getter pre konkrétny produkt
-- `getProductCount` - Getter pre počet produktov
+**CartView.vue** - Nákupný košík obsahujúci:
+- Zoznam všetkých vybraných produktov
+- Možnosť zmeny počtu kusov
+- Odobratie produktov
+- Výpočet celkovej ceny
+- Tlačítko pre pokračovanie k objednávke
 
-## 💾 localStorage
+**AboutView.vue** - Stránka s informáciami o spoločnosti a jej histórii
 
-Košík sa automaticky ukladá do `localStorage`, čo znamená že:
-- Dáta ostanú aj po zatvorení stránky
-- Refresh stránky nezmení obsah košíka
-- Dáta sa ukladajú lokálne na disku užívateľa
+**ContactView.vue** - Kontaktný formulár pre komunikáciu so zákazníckym servisom
 
-## 🎯 Minimálne Kritériá (Splnené)
+## Interaktívna Mapa (Leaflet)
 
-- ✅ Vue Router pre viacero podstránok
-- ✅ Pinia pre state management
-- ✅ 6 reusable komponentov (CartItem, ProductCard, Footer, NavBar, PriceSection, ProductRating)
-- ✅ Bez JavaScript chýb
-- ✅ Vue.js 3, HTML 5, CSS 3
-- ✅ Options API
-- ✅ GitHub repozitár
-- ✅ Unikátny projekt
+Aplikácia obsahuje integráciu **Leaflet** mapovej knižnice:
+- **Zobrazenie lokácie predajného miesta** na interaktívnej mape
+- **OpenStreetMap podkladové mapy** - bezplatný zdroj mapových dát
+- **Zoomovanie a pozorovanie** - užívatelia môžu priblížiť/oddaliť a navigovať po mape
+- **Markery lokácií** - označenie pozície predajne s pop-up informáciami
+- **Responzívna mapa** - správne zobrazenie na všetkých veľkostiach obrazoviek
+- **Integrácia do stránky** - mapa sa nachádza na kontaktnej stránke alebo v About sekcii
 
-## ⭐ Plusové Body (Implementované)
+## Mapové API
 
-- ✅ Persistencia dát v localStorage
-- ✅ Centralizovaný product store
-- ✅ Optimalizované data management
-- ✅ Responzívny dizajn
-- ✅ Reusable komponenty
-- ✅ Props/Emit komunikácia
+Aplikácia využíva **Leaflet JavaScript API** - open-source knižnicu pre interaktívne mapy:
 
-## 👨‍💻 Autor
+- **L.map()** - Inicializácia mapového objektu a nastavenie počiatočného pohľadu
+- **L.tileLayer()** - Integrácia OpenStreetMap ako podkladovej mapy (tile provider API)
+- **L.marker()** - Vytvárame a správujeme markery na mape cez API
+- **L.popup()** - Zobrazovanie pop-up informácií cez API s opisom lokácie
+- **setView(), zoomIn(), zoomOut()** - API metódy na kontrolu mapy a nastavenie úrovne zoomu
+- **on('click'), on('zoom')** - Event listening cez Leaflet API pre interakcie užívateľa
+- **getBounds(), fitBounds()** - API metódy na manipuláciu s viditeľnou oblasťou mapy
 
-Samuel
+Leaflet API je postavený na princípoch REST a poskytuje kompletnú funkcionalitu pre prácu s mapovými dátami a interakciami bez nutnosti vlastného backendu. API je jednoduché na používanie, čo umožňuje rýchlu implementáciu mapovej funkcionalnosti do Vue.js aplikácie.
 
-## 📝 Licencia
+## Splnené Požiadavky Predmetu
 
-MIT License
+✅ **Vue Router** - 6 podstránok (Home, Products, Product Detail, Cart, About, Contact) s navigáciou  
+✅ **Pinia State Management** - Správa košíka a katalógu produktov s persistenciou  
+✅ **6+ Komponentov** - CartItem, Footer, NavBar, PriceSection, ProductCard, ProductRating  
+✅ **Vue.js 3** - Verzia 3.5.25  
+✅ **HTML 5 a CSS 3** - Sémantické HTML a moderné CSS štýly  
+✅ **Options API** - Všetky komponenty napísané v Options API  
+✅ **Props/Emit komunikácia** - Správna výmena dát medzi komponentmi  
+✅ **Bez JavaScript chýb** - Bez chýb a varovania v konzole  
+✅ **Verejný GitHub repozitár** - Zdrojový kód dostupný na GitHube  
+✅ **GitHub Pages** - Aplikácia nasadená a dostupná online  
+✅ **Unikátny projekt** - E-shop so špecifickým zameraním na bicyklické potreby  
+✅ **Leaflet Mapa** - Integrácia interaktívnej mapy do aplikácie  
+✅ **localStorage** - Persistencia nákupného košíka  
 
-## 🔗 Užitočné Linky
+## Vyslaný GitHub Repozitár
 
-- [Vue.js Dokumentácia](https://vuejs.org/)
-- [Pinia Dokumentácia](https://pinia.vuejs.org/)
-- [Vue Router Dokumentácia](https://router.vuejs.org/)
-- [Vite Dokumentácia](https://vitejs.dev/)
+https://github.com/sampleuser/cyklistickeshop
 
----
+## Autor
 
-Vytvorené s ❤️ pre Frontendové Technológie
+Samuel Haluza
+
+## Licencia
+
+MIT
